@@ -154,4 +154,34 @@ For questions or issues, feel free to open an issue on GitHub.
 
 ---
 
+## Environment variables & keeping credentials private
+
+- **Never commit** secrets or `.env*` files to the repository. The project reads EmailJS credentials from Vite environment variables prefixed with `VITE_` (see `.env.example`).
+
+- To configure locally, copy `.env.example` to `.env.local` and add your real values:
+
+```bash
+cp .env.example .env.local
+# then edit .env.local and replace the placeholders
+```
+
+- The project already ignores `.env` files via `.gitignore`. If you accidentally committed a `.env` file, remove it from the repository with:
+
+```bash
+git rm --cached .env.local
+git commit -m "Remove local env with secrets"
+git push
+```
+
+- If the secret has been pushed to a remote and you need to fully remove it from history, consider using tools like `git filter-repo` or the [BFG Repo-Cleaner]. After cleaning history, rotate the exposed keys in the provider (EmailJS) immediately.
+
+- Minimal dev commands to restart after adding `.env.local`:
+
+```bash
+npm install
+npm run dev
+```
+
+If you'd like, I can run a quick scan for other accidentally committed secrets and suggest next steps to fully remove them from git history.
+
 Made with ❤️ by Your Name

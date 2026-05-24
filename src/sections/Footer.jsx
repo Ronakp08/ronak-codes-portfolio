@@ -99,7 +99,7 @@ const Footer = () => {
               isDark ? "text-slate-500" : "text-slate-600"
             }`}
           >
-            © {currentYear} Ronak Patel. Made with <Heart size={16} className="text-red-500" /> All rights reserved.
+            @ {currentYear} Ronak Patel. Made with <Heart size={16} className="text-red-500" /> All rights reserved.
           </motion.p>
         </div>
       </div>

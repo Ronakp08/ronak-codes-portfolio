@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ArrowRight } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
-import profile from "../assets/ronak_profile.jpeg";
+import profile from "../assets/Profile.png";
 
 const Hero = () => {
   const { isDark } = useTheme();

@@ -29,41 +29,46 @@ const Hero = () => {
     <section
       id="home"
       className={`relative overflow-hidden min-h-screen flex items-center justify-center pt-20 px-4 ${
-        isDark
-          ? "bg-gradient-to-br from-slate-950 via-slate-900 to-black"
-          : "bg-gradient-to-br from-white via-slate-50 to-blue-50"
+        isDark ? "bg-[#020617]" : "bg-[#f8fafc]"
       }`}
     >
-      {/* Background Blur Effects */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/20 blur-3xl rounded-full" />
-      <div className="absolute bottom-10 right-10 w-72 h-72 bg-blue-500/20 blur-3xl rounded-full" />
+      {/* Aurora Gradient Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl" />
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-400/20 rounded-full blur-3xl" />
+
+        <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-pink-300/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
         {/* Left Content */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
         >
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className={`text-sm font-semibold mb-4 ${
+            className={`text-sm font-semibold mb-4 tracking-wide ${
               isDark ? "text-slate-400" : "text-slate-600"
             }`}
           >
-            Hi there, Welcome!
+            Hi there, Welcome 👋
           </motion.p>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-5xl md:text-6xl font-bold mb-3 leading-tight"
+            className={`text-5xl md:text-6xl font-bold leading-tight mb-5 ${
+              isDark ? "text-white" : "text-slate-900"
+            }`}
           >
             I'm{" "}
-            <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 bg-clip-text text-transparent">
               Ronak Patel
             </span>
             <br />
@@ -74,12 +79,13 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className={`text-lg mb-8 max-w-md ${
+            className={`text-lg leading-relaxed max-w-lg mb-8 ${
               isDark ? "text-slate-400" : "text-slate-700"
             }`}
           >
-            Building dynamic web applications with React, Node.js, and Python.
-            I create scalable solutions that solve real problems.
+            Building modern and scalable web applications using React,
+            Node.js, MongoDB, and Python. Focused on creating clean UI,
+            smooth performance, and real-world solutions.
           </motion.p>
 
           {/* Buttons */}
@@ -93,19 +99,20 @@ const Hero = () => {
               href="#projects"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 rounded-lg font-semibold flex items-center gap-2 transition-all bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg hover:shadow-purple-500/30"
+              className="px-8 py-3 rounded-2xl font-semibold flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 text-white shadow-lg hover:shadow-purple-500/30 transition-all"
             >
-              View My Work <ArrowRight size={18} />
+              View My Work
+              <ArrowRight size={18} />
             </motion.a>
 
             <motion.a
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`px-8 py-3 rounded-lg font-semibold transition-all border backdrop-blur-md ${
+              className={`px-8 py-3 rounded-2xl font-semibold border backdrop-blur-xl transition-all ${
                 isDark
-                  ? "border-white/10 bg-white/5 text-white hover:bg-white/10"
-                  : "border-slate-300 bg-white/50 text-slate-900 hover:bg-white/70"
+                  ? "bg-white/5 border-white/10 text-white hover:bg-white/10"
+                  : "bg-white/50 border-white/40 text-slate-900 hover:bg-white/80"
               }`}
             >
               Get In Touch
@@ -125,12 +132,12 @@ const Hero = () => {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.15, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                className={`p-3 rounded-xl transition-all backdrop-blur-lg border ${
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className={`p-4 rounded-2xl border backdrop-blur-xl transition-all ${
                   isDark
-                    ? "bg-white/5 border-white/10 hover:bg-white/10"
-                    : "bg-white/60 border-slate-200 hover:bg-white"
+                    ? "bg-white/5 border-white/10 hover:bg-white/10 text-white"
+                    : "bg-white/60 border-white/40 hover:bg-white text-slate-900"
                 }`}
                 title={label}
               >
@@ -140,65 +147,50 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* Right Side - Profile Image */}
+        {/* Right Image Section */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           className="relative flex justify-center items-center"
         >
-          {/* Animated Gradient Glow */}
-          <motion.div
-            animate={{
-              scale: [1, 1.08, 1],
-              rotate: [0, 3, -3, 0],
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-            }}
-            className={`absolute w-80 h-80 rounded-[40px] blur-3xl opacity-40 bg-gradient-to-br ${
-              isDark
-                ? "from-purple-600 via-blue-500 to-cyan-400"
-                : "from-purple-300 via-blue-300 to-pink-300"
-            }`}
-          />
-
-          {/* Decorative Ring */}
+          {/* Soft Gradient Glow */}
           <div
-            className={`absolute w-[310px] h-[310px] rounded-[35px] border ${
-              isDark ? "border-white/10" : "border-slate-300/70"
+            className={`absolute w-[340px] h-[340px] rounded-full blur-3xl opacity-40 ${
+              isDark
+                ? "bg-gradient-to-br from-purple-500 via-blue-500 to-cyan-400"
+                : "bg-gradient-to-br from-purple-200 via-blue-200 to-pink-200"
             }`}
           />
 
-          {/* Profile Card */}
-          <motion.div
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 4, repeat: Infinity }}
-            className={`relative z-10 w-72 h-72 rounded-[32px] overflow-hidden backdrop-blur-xl shadow-2xl border ${
+          {/* Aurora Glow */}
+          <div className="absolute w-[280px] h-[280px] rounded-full bg-purple-400/20 blur-[90px]" />
+
+          <div className="absolute w-[220px] h-[220px] rounded-full bg-blue-400/20 blur-[80px]" />
+
+          {/* Image Card */}
+          <div
+            className={`relative z-10 w-72 h-72 rounded-[32px] overflow-hidden backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.15)] ${
               isDark
-                ? "bg-white/5 border-white/10"
-                : "bg-white/40 border-white/50"
+                ? "bg-white/5 border border-white/10"
+                : "bg-white/40 border border-white/40"
             }`}
           >
-            {/* Gradient Overlay */}
+            {/* Overlay */}
             <div
-              className={`absolute inset-0 z-10 bg-gradient-to-t ${
+              className={`absolute inset-0 z-10 ${
                 isDark
-                  ? "from-slate-900/70 via-slate-900/10 to-transparent"
-                  : "from-white/50 via-transparent to-transparent"
+                  ? "bg-gradient-to-t from-black/30 to-transparent"
+                  : "bg-gradient-to-t from-white/20 to-transparent"
               }`}
             />
-
-            {/* Shine Effect */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent z-20" />
 
             <img
               src={profile}
               alt="Ronak Patel"
-              className="w-full h-full object-cover scale-105 hover:scale-110 transition-transform duration-700"
+              className="w-full h-full object-cover scale-105"
             />
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

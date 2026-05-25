@@ -14,7 +14,17 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home" className={`min-h-screen flex items-center justify-center pt-20 px-4 ${isDark ? "bg-slate-900" : "bg-gradient-to-br from-slate-50 to-slate-100"}`}>
+  <section
+  id="home"
+  className={`relative overflow-hidden min-h-screen flex items-center justify-center pt-20 px-4 ${
+    isDark
+      ? "bg-gradient-to-br from-slate-950 via-slate-900 to-black"
+      : "bg-gradient-to-br from-white via-slate-50 to-blue-50"
+  }`}
+><section id="home" className={`min-h-screen flex items-center justify-center pt-20 px-4 ${isDark ? "bg-slate-900" : "bg-gradient-to-br from-slate-50 to-slate-100"}`}>
+      {/* Background Blur Effects */}
+<div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/20 blur-3xl rounded-full" />
+<div className="absolute bottom-10 right-10 w-72 h-72 bg-blue-500/20 blur-3xl rounded-full" />
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <motion.div
@@ -106,33 +116,81 @@ const Hero = () => {
         </motion.div>
 
         {/* Right Side - Profile Image */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative flex justify-center items-center"
-        >
-          {/* Decorative Blobs */}
-          <motion.div
-            animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
-            transition={{ duration: 5, repeat: Infinity }}
-            className="absolute inset-0 rounded-3xl blur-3xl opacity-30 bg-gradient-to-br from-purple-500 to-blue-500"
-          />
+<motion.div
+  initial={{ opacity: 0, x: 50 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8 }}
+  className="relative flex justify-center items-center"
+>
+  {/* Animated Gradient Glow */}
+  <motion.div
+    animate={{
+      scale: [1, 1.08, 1],
+      rotate: [0, 3, -3, 0],
+    }}
+    transition={{
+      duration: 6,
+      repeat: Infinity,
+    }}
+    className={`
+      absolute w-80 h-80 rounded-[40px]
+      blur-3xl opacity-40
+      bg-gradient-to-br
+      ${isDark
+        ? "from-purple-600 via-blue-500 to-cyan-400"
+        : "from-purple-300 via-blue-300 to-pink-300"}
+    `}
+  />
 
-          {/* Profile Image Container */}
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 3, repeat: Infinity }}
-            className="relative z-10 w-72 h-72 rounded-3xl overflow-hidden border-4 border-slate-700/50"
-          >
-            <img
-              src={profile}
-              alt="Ronak Patel"
-              className="w-full h-full object-cover"
-            />
-            <div className={`absolute inset-0 bg-gradient-to-t ${isDark ? "from-slate-900/60" : "from-slate-100/40"}`} />
-          </motion.div>
-        </motion.div>
+  {/* Decorative Ring */}
+  <div
+    className={`
+      absolute w-[310px] h-[310px]
+      rounded-[35px]
+      border
+      ${isDark
+        ? "border-white/10"
+        : "border-slate-300/70"}
+    `}
+  />
+
+  {/* Profile Card */}
+  <motion.div
+    animate={{ y: [0, -12, 0] }}
+    transition={{ duration: 4, repeat: Infinity }}
+    className={`
+      relative z-10
+      w-72 h-72 rounded-[32px]
+      overflow-hidden
+      backdrop-blur-xl
+      shadow-2xl
+      border
+      ${isDark
+        ? "bg-white/5 border-white/10"
+        : "bg-white/40 border-white/50"}
+    `}
+  >
+    {/* Gradient Overlay */}
+    <div
+      className={`
+        absolute inset-0 z-10
+        bg-gradient-to-t
+        ${isDark
+          ? "from-slate-900/70 via-slate-900/10 to-transparent"
+          : "from-white/50 via-transparent to-transparent"}
+      `}
+    />
+
+    {/* Shine Effect */}
+    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent z-20" />
+
+    <img
+      src={profile}
+      alt="Ronak Patel"
+      className="w-full h-full object-cover scale-105 hover:scale-110 transition-transform duration-700"
+    />
+  </motion.div>
+</motion.div>
       </div>
     </section>
   );

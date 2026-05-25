@@ -32,7 +32,7 @@ const Hero = () => {
         isDark ? "bg-[#020617]" : "bg-[#f8fafc]"
       }`}
     >
-      {/* Aurora Gradient Background */}
+      {/* Aurora Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl" />
 
@@ -41,7 +41,7 @@ const Hero = () => {
         <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-pink-300/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
+      <div className="relative z-10 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         {/* Left Content */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -154,43 +154,33 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="relative flex justify-center items-center"
         >
-          {/* Soft Gradient Glow */}
+          {/* Main Aurora Gradient */}
           <div
-            className={`absolute w-[340px] h-[340px] rounded-full blur-3xl opacity-40 ${
-              isDark
-                ? "bg-gradient-to-br from-purple-500 via-blue-500 to-cyan-400"
-                : "bg-gradient-to-br from-purple-200 via-blue-200 to-pink-200"
-            }`}
+            className={`
+              absolute w-[380px] h-[380px]
+              rounded-full blur-3xl opacity-50
+              ${
+                isDark
+                  ? "bg-gradient-to-br from-purple-500 via-blue-500 to-cyan-400"
+                  : "bg-gradient-to-br from-purple-300 via-blue-300 to-pink-300"
+              }
+            `}
           />
 
-          {/* Aurora Glow */}
-          <div className="absolute w-[280px] h-[280px] rounded-full bg-purple-400/20 blur-[90px]" />
+          {/* Secondary Glow */}
+          <div className="absolute w-[260px] h-[260px] rounded-full bg-blue-400/20 blur-[100px]" />
 
-          <div className="absolute w-[220px] h-[220px] rounded-full bg-blue-400/20 blur-[80px]" />
+          {/* Third Soft Glow */}
+          <div className="absolute w-[220px] h-[220px] rounded-full bg-pink-400/20 blur-[90px]" />
 
-          {/* Image Card */}
-          <div
-            className={`relative z-10 w-72 h-72 rounded-[32px] overflow-hidden backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.15)] ${
-              isDark
-                ? "bg-white/5 border border-white/10"
-                : "bg-white/40 border border-white/40"
-            }`}
-          >
-            {/* Overlay */}
-            <div
-              className={`absolute inset-0 z-10 ${
-                isDark
-                  ? "bg-gradient-to-t from-black/30 to-transparent"
-                  : "bg-gradient-to-t from-white/20 to-transparent"
-              }`}
-            />
-
-            <img
-              src={profile}
-              alt="Ronak Patel"
-              className="w-full h-full object-cover scale-105"
-            />
-          </div>
+          {/* Profile Image */}
+          <motion.img
+            src={profile}
+            alt="Ronak Patel"
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.4 }}
+            className="relative z-10 w-72 md:w-80 object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.25)]"
+          />
         </motion.div>
       </div>
     </section>
